@@ -50,7 +50,7 @@ namespace Sistema
 
         public void BorrarPersona()
         {
-            String archivo = @"\FACU_fer\labo\personas.txt";
+            String archivo = @"\personas.txt";
 
             Console.WriteLine("Ingrese ID a borrar:");
             String id = Console.ReadLine();
@@ -67,11 +67,12 @@ namespace Sistema
                 }
             }
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + archivo, lineas);
+            Carpeta.borrar();
         }
 
         public void ListarPersonas()
         {
-            String archivo = @"\FACU_fer\labo\personas.txt";
+            String archivo = @"\personas.txt";
             try
             {
                 using(StreamReader streamReader = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + archivo))
@@ -91,11 +92,12 @@ namespace Sistema
                 Console.WriteLine("No se pudo leer el archivo");
                 Console.WriteLine(e.Message);
             }
+            Carpeta.borrar();
         }
 
         public void BuscarPersona()
         {
-            String archivo = @"\FACU_fer\labo\personas.txt";
+            String archivo = @"\personas.txt";
 
             Console.WriteLine("Ingrese ID a buscar:");
             String id = Console.ReadLine();
@@ -112,6 +114,7 @@ namespace Sistema
                         if (Columna.Equals(id))
                         {
                             Console.WriteLine(linea);
+                            Carpeta.borrar();
                             return;
                         }
                     }
@@ -123,6 +126,7 @@ namespace Sistema
                 Console.WriteLine("No se pudo leer el archivo");
                 Console.WriteLine(e.Message);
             }
+            Carpeta.borrar();
         }
 
     }

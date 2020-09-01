@@ -16,36 +16,38 @@ namespace Sistema
         {
             this.carpeta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + this.nombre;
         }
-        public Boolean VerificarCarpeta()
+        public void VerificarCarpeta()
         {
             if (!Directory.Exists(this.carpeta))
             {
                 Console.WriteLine("No existe la carpeta {0}", this.carpeta);
-                return false;
             }
             else
             {
                 Console.WriteLine("Existe la carpeta {0}", this.carpeta);
-                return true;
             }
+            Carpeta.borrar();
         }
 
         public void CrearCarpeta()
         {
-            if (this.VerificarCarpeta())
+            if (Directory.Exists(this.carpeta))
             {
                 Console.WriteLine("Ya existe la carpeta {0}", this.carpeta);
+                Carpeta.borrar();
                 return;
             }
             DirectoryInfo di = Directory.CreateDirectory(this.carpeta);
             Console.WriteLine("{0} creado Ok", this.carpeta);
+            Carpeta.borrar();
         }
 
         public void BorrarCarpeta()
         {
-            if (!this.VerificarCarpeta()) // que devuelve Directory.Existe(..)? un booleano
+            if (!Directory.Exists(this.carpeta)) // que devuelve Directory.Existe(..)? un booleano
             {
                 Console.WriteLine("No existe la carpeta {0}", this.carpeta);
+                Carpeta.borrar();
                 return;
             }
             try
@@ -62,6 +64,13 @@ namespace Sistema
             }
             
             Console.WriteLine("{0} borrada Ok", this.carpeta);
+            Carpeta.borrar();
+        }
+        public static void borrar()
+        {
+            Console.WriteLine("Presione enter para continua..");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
