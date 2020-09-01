@@ -67,6 +67,7 @@ namespace Sistema
                 }
             }
             File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + archivo, lineas);
+            Carpeta.borrar();
         }
 
         public void ListarPersonas()
@@ -91,6 +92,7 @@ namespace Sistema
                 Console.WriteLine("No se pudo leer el archivo");
                 Console.WriteLine(e.Message);
             }
+            Carpeta.borrar();
         }
 
         public void BuscarPersona()
@@ -112,6 +114,7 @@ namespace Sistema
                         if (Columna.Equals(id))
                         {
                             Console.WriteLine(linea);
+                            Carpeta.borrar();
                             return;
                         }
                     }
@@ -123,6 +126,7 @@ namespace Sistema
                 Console.WriteLine("No se pudo leer el archivo");
                 Console.WriteLine(e.Message);
             }
+            Carpeta.borrar();
         }
 
     }
